@@ -1,9 +1,11 @@
 <?php
 require_once('../configurationHandler.php');
 
-$locationLattitude = $globalConfiguration["locationLattitude"];
-$locationLongitude = $globalConfiguration["locationLongitude"];
-$apiKey = $globalConfiguration["weatherApiKey"];
+$configurationHandler = new ConfigurationHandler();
+
+$locationLattitude = $configurationHandler->getGlobalConfiguration("locationLattitude");
+$locationLongitude =  $configurationHandler->getGlobalConfiguration("locationLongitude");
+$apiKey =  $configurationHandler->getGlobalConfiguration("weatherApiKey");
 $weatherMapURL = "http://api.openweathermap.org/data/2.5/weather?units=metric&lat=" . $locationLattitude . "&lon=" . $locationLongitude . "&APPID=" . $apiKey;
 
 $curl = curl_init();
